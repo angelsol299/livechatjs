@@ -11,6 +11,7 @@ class Chatroom {
     this.room = room;
     this.username = userName;
     this.chats = db.collection("chats");
+    this.unsub;
   }
   async addChat(message) {
     // format a chat object
@@ -27,7 +28,7 @@ class Chatroom {
   }
 
   getChats(callback) {
-    this.chats
+    this.unsub = this.chats
       .where("room", "==", this.room)
       .orderBy("created_at")
       .onSnapshot(snapshot => {
@@ -38,6 +39,16 @@ class Chatroom {
           }
         });
       });
+  }
+  updateName(username) {
+    this.username = username;
+  }
+  updateRoom(room) {
+    this.room = room;
+    console.log("room updated");
+    if (this.unsub) {
+      this.unsub();
+    }
   }
 }
 
