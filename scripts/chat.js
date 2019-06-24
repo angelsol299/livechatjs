@@ -25,6 +25,15 @@ class Chatroom {
     const response = await this.chats.add(chat);
     return response;
   }
+  getChats() {
+    this.chats.onSnapshot(snapshot => {
+      snapshot.docChanges().forEach(change => {
+        if (change.type === "added") {
+          // update the ui
+        }
+      });
+    });
+  }
 }
 
 const chatroom = new Chatroom("gaming", "shaun");
