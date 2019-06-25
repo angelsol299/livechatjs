@@ -2,15 +2,22 @@
 
 const chatList = document.querySelector(".chat-list");
 const newChatForm = document.querySelector(".new-chat");
+const newNameForm = document.querySelector(".new-name");
 
 //add a new chat
-newChateForm.addEventListener("submit", e => {
+newChatForm.addEventListener("submit", e => {
   e.preventDefault();
   const message = newChatForm.message.value.trim();
   chatroom
     .addChat(message)
     .then(() => newChatForm.reset())
     .catch(err => console.log(err));
+});
+
+//update username
+newNameForm.addEventListener("submit", e => {
+  e.preventDefault();
+  const newName = newNameForm.name.value.trim();
 });
 
 //class instances

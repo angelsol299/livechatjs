@@ -18,7 +18,7 @@ class Chatroom {
     const now = new Date();
     const chat = {
       message,
-      userName: this.username,
+      username: this.username,
       room: this.room,
       created_at: firebase.firestore.Timestamp.fromDate(now)
     };
