@@ -7,6 +7,4 @@ const chatUI = new ChatUI(chatList);
 const chatroom = new Chatroom("general", "shaun");
 
 //get chats and render
-chatroom.getChats(data => {
-  console.log(data);
-});
+chatroom.getChats(data => chatUI.render(data));
