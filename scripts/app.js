@@ -31,7 +31,11 @@ newNameForm.addEventListener("submit", e => {
 
 //update chatrooms
 rooms.addEventListener("click", e => {
-  console.log(e);
+  if (e.target.tagName === "BUTTON") {
+    chatUI.clear();
+    chatroom.updateRoom(e.target.getAttribute("id"));
+    chatroom.getChats(chat => chatUI.render(chat));
+  }
 });
 
 //check if local storage has a name
